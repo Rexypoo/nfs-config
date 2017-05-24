@@ -9,6 +9,10 @@
 # /srv/nfs4/homes  gss/krb5i(rw,sync,no_subtree_check)
 #
 
-# For security we will only export to localhost (127.0.0.1) and use an ssh tunnel to reach ports on the server
+# For security we will only export to localhost (127.0.0.1) and use an ssh tunnel to reach ports on the server are expl
+# We are explicitly defining the options
+# rw - read and write, default is readonly (ro)
+# sync - sychronize the files immediately - more stable if the server has a failure
+# root_squash - prevents root user from accessing the share -- this is significant because a UID identifying as root (UID 0) on a client can access files as root on the server
 
-/home/rex/ 127.0.0.1(rw,sync,no_subtree_check,root_squash)
+/home/rex/ 127.0.0.1(rw,sync,root_squash)
